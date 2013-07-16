@@ -120,6 +120,12 @@
     return (objects) ? [objects lastObject] : nil;
 }
 
+- (NSManagedObject*)singleObjectForFetchRequest:(NSFetchRequest*)fetchRequest
+{
+    NSArray* objects = [self objectsForFetchRequest:fetchRequest];
+    return (objects) ? [objects lastObject] : nil;
+}
+
 - (NSArray*)objectsForFetchRequest:(NSFetchRequest*)fetchRequest
 {
 	NSParameterAssert(fetchRequest);

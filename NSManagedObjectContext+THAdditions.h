@@ -20,6 +20,7 @@
 - (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName;
 - (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
 - (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
+- (NSManagedObject*)singleObjectForFetchRequest:(NSFetchRequest*)fetchRequest;
 
 - (void)persistAsync;
 - (void)persist;
