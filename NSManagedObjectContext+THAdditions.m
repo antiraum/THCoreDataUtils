@@ -7,6 +7,8 @@
 //
 
 #import "NSManagedObjectContext+THAdditions.h"
+#import "THLog.h"
+#import "THWeakSelf.h"
 
 #if !__has_feature(objc_arc)
 #error THHybridCache must be built with ARC.
@@ -48,7 +50,7 @@
 	NSParameterAssert(fetchRequest);
 	
     __block NSUInteger count = NSNotFound;
-    PGWeakSelf wself = self;
+    THWeakSelf wself = self;
     [self performBlockAndWait:^{
         NSError* err = nil;
         count = [wself countForFetchRequest:fetchRequest error:&err];
@@ -123,7 +125,7 @@
 	NSParameterAssert(fetchRequest);
 	
     __block NSArray* objects = nil;
-    PGWeakSelf wself = self;
+    THWeakSelf wself = self;
     [self performBlockAndWait:^{
         NSError* err = nil;
         objects = [wself executeFetchRequest:fetchRequest error:&err];
@@ -139,7 +141,7 @@
 - (void)persistAsync
 {
     [self processPendingChanges];
-    PGWeakSelf wself = self;
+    THWeakSelf wself = self;
     [self performBlock:^{
         [wself doPersist];
     }];
@@ -147,7 +149,7 @@
 
 - (void)persist
 {
-    PGWeakSelf wself = self;
+    THWeakSelf wself = self;
     [self performBlockAndWait:^{
         [wself doPersist];
     }];
