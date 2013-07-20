@@ -8,21 +8,21 @@
 
 @interface NSManagedObjectContext (THAdditions)
 
-- (NSUInteger)countForEntityName:(NSString*)entityName;
-- (NSUInteger)countForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
-- (NSUInteger)countForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
+- (NSUInteger)th_countForEntityName:(NSString*)entityName;
+- (NSUInteger)th_countForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
+- (NSUInteger)th_countForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
 
-- (NSArray*)objectsForEntityName:(NSString*)entityName;
-- (NSArray*)objectsForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
-- (NSArray*)objectsForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
-- (NSArray*)objectsForFetchRequest:(NSFetchRequest*)fetchRequest;
+- (NSArray*)th_objectsForEntityName:(NSString*)entityName;
+- (NSArray*)th_objectsForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
+- (NSArray*)th_objectsForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
+- (NSArray*)th_objectsForFetchRequest:(NSFetchRequest*)fetchRequest;
 
-- (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName;
-- (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
-- (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
-- (NSManagedObject*)singleObjectForFetchRequest:(NSFetchRequest*)fetchRequest;
+- (NSManagedObject*)th_singleObjectForEntityName:(NSString*)entityName;
+- (NSManagedObject*)th_singleObjectForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...;
+- (NSManagedObject*)th_singleObjectForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate;
+- (NSManagedObject*)th_singleObjectForFetchRequest:(NSFetchRequest*)fetchRequest;
 
-- (void)persistAsync;
-- (void)persist;
+- (void)th_persistAsync;
+- (void)th_persist;
 
 @end

@@ -19,12 +19,12 @@
 
 #pragma mark - Count Fetcher
 
-- (NSUInteger)countForEntityName:(NSString*)entityName
+- (NSUInteger)th_countForEntityName:(NSString*)entityName
 {
-	return [self countForEntityName:entityName withPredicate:nil];
+	return [self th_countForEntityName:entityName withPredicate:nil];
 }
 
-- (NSUInteger)countForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...
+- (NSUInteger)th_countForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...
 {
 	NSParameterAssert(entityName && format);
     
@@ -33,10 +33,10 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:arguments];
 	va_end(arguments);
 
-	return [self countForEntityName:entityName withPredicate:predicate];
+	return [self th_countForEntityName:entityName withPredicate:predicate];
 }
 
-- (NSUInteger)countForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate
+- (NSUInteger)th_countForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate
 {
     NSParameterAssert(entityName);
     
@@ -63,12 +63,12 @@
 
 #pragma mark - Objects Fetcher
 
-- (NSArray*)objectsForEntityName:(NSString*)entityName
+- (NSArray*)th_objectsForEntityName:(NSString*)entityName
 {
-    return [self objectsForEntityName:entityName withPredicate:nil];
+    return [self th_objectsForEntityName:entityName withPredicate:nil];
 }
 
-- (NSArray*)objectsForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...
+- (NSArray*)th_objectsForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...
 {
 	NSParameterAssert(entityName && format);
     
@@ -77,26 +77,26 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:arguments];
 	va_end(arguments);
     
-    return [self objectsForEntityName:entityName withPredicate:predicate];
+    return [self th_objectsForEntityName:entityName withPredicate:predicate];
 }
 
-- (NSArray*)objectsForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate
+- (NSArray*)th_objectsForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate
 {
     NSParameterAssert(entityName);
     
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     if (predicate) [request setPredicate:predicate];
-    return [self objectsForFetchRequest:request];
+    return [self th_objectsForFetchRequest:request];
 }
 
 #pragma mark - Single Object Fetcher
 
-- (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName
+- (NSManagedObject*)th_singleObjectForEntityName:(NSString*)entityName
 {
-    return [self singleObjectForEntityName:entityName withPredicate:nil];
+    return [self th_singleObjectForEntityName:entityName withPredicate:nil];
 }
 
-- (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...
+- (NSManagedObject*)th_singleObjectForEntityName:(NSString*)entityName withPredicateFormat:(NSString*)format, ...
 {
 	NSParameterAssert(entityName && format);
     
@@ -105,28 +105,28 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:arguments];
 	va_end(arguments);
     
-    return [self singleObjectForEntityName:entityName withPredicate:predicate];
+    return [self th_singleObjectForEntityName:entityName withPredicate:predicate];
 }
 
-- (NSManagedObject*)singleObjectForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate
+- (NSManagedObject*)th_singleObjectForEntityName:(NSString*)entityName withPredicate:(NSPredicate*)predicate
 {
     NSParameterAssert(entityName);
     
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     if (predicate) [request setPredicate:predicate];
     [request setFetchLimit:1];
-    NSArray* objects = [self objectsForFetchRequest:request];
+    NSArray* objects = [self th_objectsForFetchRequest:request];
     
     return (objects) ? [objects lastObject] : nil;
 }
 
-- (NSManagedObject*)singleObjectForFetchRequest:(NSFetchRequest*)fetchRequest
+- (NSManagedObject*)th_singleObjectForFetchRequest:(NSFetchRequest*)fetchRequest
 {
-    NSArray* objects = [self objectsForFetchRequest:fetchRequest];
+    NSArray* objects = [self th_objectsForFetchRequest:fetchRequest];
     return (objects) ? [objects lastObject] : nil;
 }
 
-- (NSArray*)objectsForFetchRequest:(NSFetchRequest*)fetchRequest
+- (NSArray*)th_objectsForFetchRequest:(NSFetchRequest*)fetchRequest
 {
 	NSParameterAssert(fetchRequest);
 	
@@ -144,7 +144,7 @@
 
 #pragma mark - Persist
 
-- (void)persistAsync
+- (void)th_persistAsync
 {
     [self processPendingChanges];
     THWeakSelf wself = self;
@@ -153,7 +153,7 @@
     }];
 }
 
-- (void)persist
+- (void)th_persist
 {
     THWeakSelf wself = self;
     [self performBlockAndWait:^{
